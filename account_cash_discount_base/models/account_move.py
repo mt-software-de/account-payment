@@ -6,9 +6,6 @@ from datetime import timedelta
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
-READONLY_STATES = {
-    "draft": [("readonly", False)],
-}
 DISCOUNT_ALLOWED_TYPES = (
     "in_invoice",
     "in_refund",
@@ -24,8 +21,6 @@ class AccountMove(models.Model):
     )
     discount_percent = fields.Float(
         string="Discount (%)",
-        readonly=True,
-        states=READONLY_STATES,
         digits="Discount",
     )
     amount_total_with_discount = fields.Monetary(
@@ -46,10 +41,8 @@ class AccountMove(models.Model):
         compute="_compute_refunds_discount_amount",
         store=True,
     )
-    discount_delay = fields.Integer(
-        string="Discount Delay (days)", readonly=True, states=READONLY_STATES
-    )
-    discount_due_date = fields.Date(readonly=True, states=READONLY_STATES)
+    discount_delay = fields.Integer(string="Discount Delay (days)")
+    discount_due_date = fields.Date()
     discount_due_date_readonly = fields.Date(
         compute="_compute_discount_due_date",
     )

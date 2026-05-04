@@ -11,14 +11,18 @@
                 <group
                     string="Cash Discount"
                     name="cash_discount"
-                    attrs="{'invisible': [('is_cash_discount_allowed', '=', False)]}"
+                    invisible="not is_cash_discount_allowed"
                 >
                     <field name="is_cash_discount_allowed" invisible="1" />
-                    <field name="discount_percent" />
+                    <field name="discount_percent" readonly="state != 'draft'" />
                     <field name="discount_amount" />
                     <field name="amount_total_with_discount" />
-                    <field name="discount_delay" />
-                    <field name="discount_due_date" invisible="1" />
+                    <field name="discount_delay" readonly="state != 'draft'" />
+                    <field
+                        name="discount_due_date"
+                        invisible="1"
+                        readonly="state != 'draft'"
+                    />
                     <field
                         name="discount_due_date_readonly"
                         string="Discount Due Date"
