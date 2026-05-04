@@ -7,7 +7,7 @@ from odoo.tests.common import SavepointCase
 class TestAccountCashDiscountCommon(SavepointCase):
     @classmethod
     def setUpClass(cls):
-        super(TestAccountCashDiscountCommon, cls).setUpClass()
+        super().setUpClass()
         cls.Account = cls.env["account.account"]
         cls.AccountMove = cls.env["account.move"]
         cls.AccountMoveReversal = cls.env["account.move.reversal"]

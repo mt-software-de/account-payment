@@ -57,7 +57,7 @@ class TestAccountCashDiscountPayment(TestAccountCashDiscountPaymentCommon):
         payment_line.pay_with_discount = True
         payment_line._onchange_pay_with_discount()
         self.assertAlmostEqual(payment_line.amount_currency, 1500)
-        payment_line.invalidate_cache()
+        payment_line.invalidate_recordset()
 
         # Check pay_with_discount_constraint
         with self.assertRaises(ValidationError), self.env.cr.savepoint():

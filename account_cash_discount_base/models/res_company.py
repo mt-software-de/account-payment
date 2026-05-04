@@ -5,7 +5,6 @@ from odoo import _, api, fields, models
 
 
 class ResCompany(models.Model):
-
     _inherit = "res.company"
 
     cash_discount_base_amount_type = fields.Selection(

@@ -17,7 +17,6 @@ DISCOUNT_ALLOWED_TYPES = (
 
 
 class AccountMove(models.Model):
-
     _inherit = "account.move"
 
     is_cash_discount_allowed = fields.Boolean(
@@ -176,7 +175,7 @@ class AccountMove(models.Model):
     )
     def _onchange_partner_id(self):
         old_payment_term_id = self.invoice_payment_term_id
-        res = super(AccountMove, self)._onchange_partner_id()
+        res = super()._onchange_partner_id()
         if self.invoice_payment_term_id != old_payment_term_id:
             # be sure to load discount options based on the payment term.
             # It was not loaded when creating a vendor bill from a purchase
@@ -232,10 +231,10 @@ class AccountMove(models.Model):
                     )
                     % (move.id,)
                 )
-        return super(AccountMove, self).action_post()
+        return super().action_post()
 
     def _reverse_move_vals(self, default_values, cancel=True):
-        res = super(AccountMove, self)._reverse_move_vals(default_values, cancel=cancel)
+        res = super()._reverse_move_vals(default_values, cancel=cancel)
         partner_id = self.partner_id
         if self.move_type in DISCOUNT_ALLOWED_TYPES and partner_id:
             partner = self.env["res.partner"].browse(partner_id)

@@ -15,7 +15,8 @@
             <field name="date_type" position="after">
                 <field
                     name="cash_discount_date"
-                    attrs="{'invisible': [('date_type', '!=', 'discount_due_date')], 'required': [('date_type', '=', 'discount_due_date')]}"
+                    invisible="date_type != 'discount_due_date'"
+                    required="date_type == 'discount_due_date'"
                 />
             </field>
             <field name="move_line_ids" position="attributes">
@@ -24,7 +25,7 @@
                 >{'tree_view_display_discount': True}</attribute>
             </field>
             <xpath
-                expr="//field[@name='move_line_ids']/tree/field[@name='company_currency_id']"
+                expr="//field[@name='move_line_ids']/list/field[@name='company_currency_id']"
                 position="after"
             >
                 <field name="discount_due_date" />
