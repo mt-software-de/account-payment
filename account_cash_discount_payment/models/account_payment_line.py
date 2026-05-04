@@ -7,7 +7,6 @@ from odoo.tools import float_compare
 
 
 class PaymentLine(models.Model):
-
     _inherit = "account.payment.line"
 
     pay_with_discount = fields.Boolean(

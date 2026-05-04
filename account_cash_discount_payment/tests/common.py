@@ -11,7 +11,7 @@ from odoo.addons.account_cash_discount_base.tests.common import (
 class TestAccountCashDiscountPaymentCommon(TestAccountCashDiscountCommon):
     @classmethod
     def setUpClass(cls):
-        super(TestAccountCashDiscountPaymentCommon, cls).setUpClass()
+        super().setUpClass()
         cls.PaymentLineCreate = cls.env["account.payment.line.create"]
         cls.PaymentOrder = cls.env["account.payment.order"]
 
@@ -33,7 +33,6 @@ class TestAccountCashDiscountPaymentCommon(TestAccountCashDiscountCommon):
     def create_supplier_invoice(
         self, date, payment_mode, amount, discount_percent, taxes
     ):
-
         invoice_form = Form(
             self.AccountMove.with_context(
                 default_move_type="in_invoice",

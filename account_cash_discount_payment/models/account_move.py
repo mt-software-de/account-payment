@@ -6,7 +6,6 @@ from odoo.tools import float_compare
 
 
 class AccountMove(models.Model):
-
     _inherit = "account.move"
 
     def _can_pay_invoice_with_discount(self, check_due_date=True):
