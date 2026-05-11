@@ -40,24 +40,24 @@
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="priority" eval="90" />
         <field name="arch" type="xml">
-            <field name="state" position="before">
+            <xpath expr="//field[@name='status_in_payment']" position="before">
                 <field
                     name="discount_amount"
-                    invisible="context.get('default_type') != 'out_invoice'"
+                    column_invisible="context.get('default_move_type') != 'out_invoice'"
                     sum="Total"
                     optional="show"
                 />
                 <field
                     name="amount_total_with_discount"
-                    invisible="context.get('default_type') != 'out_invoice'"
+                    column_invisible="context.get('default_move_type') != 'out_invoice'"
                     sum="Total"
                     optional="show"
                 />
                 <field
                     name="discount_due_date_readonly"
-                    invisible="context.get('default_type') != 'out_invoice'"
+                    column_invisible="context.get('default_move_type') != 'out_invoice'"
                 />
-            </field>
+            </xpath>
         </field>
     </record>
 </odoo>
