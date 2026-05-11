@@ -6,7 +6,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 
 from odoo.exceptions import UserError
-from odoo.tests.common import Form
+from odoo.tests import Form
 
 from .common import TestAccountCashDiscountCommon
 
@@ -86,7 +86,7 @@ class TestAccountCashDiscountBase(TestAccountCashDiscountCommon):
         invoice._onchange_discount_delay()
         self.assertFalse(invoice.discount_due_date)
 
-        invoice.invalidate_cache()
+        invoice.invalidate_recordset()
         invoice.discount_percent = 10
         invoice._onchange_discount_delay()
         self.assertEqual(invoice.discount_due_date, today_10_days_later)

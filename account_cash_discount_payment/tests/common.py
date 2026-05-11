@@ -44,7 +44,6 @@ class TestAccountCashDiscountPaymentCommon(TestAccountCashDiscountCommon):
         )
         invoice_form.partner_id = self.partner_agrolait
         invoice_form.invoice_date = date
-        invoice_form.discount_due_date = date
         invoice_form.discount_percent = discount_percent
 
         with invoice_form.invoice_line_ids.new() as line_form:
@@ -57,4 +56,6 @@ class TestAccountCashDiscountPaymentCommon(TestAccountCashDiscountCommon):
                 line_form.tax_ids.add(tax)
 
         invoice = invoice_form.save()
+        invoice = invoice_form.save()
+        invoice.discount_due_date = date  # set directly on the record
         return invoice
